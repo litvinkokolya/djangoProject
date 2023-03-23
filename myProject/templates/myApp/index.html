@@ -1,4 +1,16 @@
-{% extends "myApp/base.html" %}
-{% block title %} Index {% endblock title %}
-{% block header %} Главная страница {% endblock header %}
-{% block content %}Связка шаблонов index.html and base.html{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <input type="submit" value="Отправить">
+</form>
+</body>
+</html>

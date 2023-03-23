@@ -1,14 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseBadRequest
-from django.template.response import TemplateResponse
+from django.http import *
+from .forms import UserForm
 
 def index(request):
-    header = "Персональные данные"
-    langs = ["Английский", "Немецкий", "Испанский"]
-    user = {"name" : "Максим", "age": 30}
-    addr = ("Виноградная", 23, 45)
-    data = {"header": header, "langs": langs, "user": user, "address": addr}
-    return render(request, "myApp/index.html")
+    if request.method == "POST":
+        name = request.POST.get("name")
+        age = request.POST.get("age")
+        output = "<h2> Пользователь </h2> <h3> Имя: {0} Возраст: {1}</h3>".format(name, age)
+        return HttpResponse(output)
+    else:
+        userform = UserForm()
+        return render(request, "myApp/index.html", {"form": userform})
 
 def about(request):
     return HttpResponse("<h2>О сайте</h2>")
