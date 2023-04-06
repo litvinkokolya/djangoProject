@@ -1,2 +1,10 @@
 body h1 {color: pink;}
 body h2 {color: blue;}
+table {
+      border: 0.05em solid red;
+      width:33%;
+      display: flex;
+      justify-content: center;
+      background-color: pink;}
+
+#submit {margin-left: 28%;}

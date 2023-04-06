@@ -4,9 +4,17 @@ from .forms import UserForm
 
 def index(request):
     if request.method == "POST":
-        name = request.POST.get("name")
+        fio = request.POST.get("fio")
         age = request.POST.get("age")
-        output = "<h2> Пользователь </h2> <h3> Имя: {0} Возраст: {1}</h3>".format(name, age)
+        mail = request.POST.get("mail")
+        image = request.POST.get("image")
+        spisok = request.POST.get("spisok")
+        dateAndTime = request.POST.get("dateAndTime")
+        yesOrNo = request.POST.get("yesOrNo")
+        output = "<h2> ФИО: {0} </h2> <h2> Возраст: {1}</h2>" \
+                 "<h2> Почта: {2} </h2> <h2> Картинка {3} </h2>" \
+                 "<h2> Курс: {4} </h2> <h2> Дата: {5} </h2>"\
+                 "<h1> Робот? - {6}</h1>".format(fio, age, mail, image, spisok, dateAndTime, yesOrNo)
         return HttpResponse(output)
     else:
         userform = UserForm()
